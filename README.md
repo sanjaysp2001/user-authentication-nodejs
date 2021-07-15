@@ -11,9 +11,9 @@ This application provides basic features such as User Registration and User Logi
 After Successful login/registration, it displays a page with a welcome message with the name of the user that logged in/registered. The use can logout using a button provided
 
 # Usage
-'''
+```
 npm install
-'''
-'''
+```
+```
 npm start
-'''
+```
