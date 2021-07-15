@@ -7,7 +7,6 @@ User Authentication is an important functionality in any application. In this pr
 # Overview
 This application provides basic features such as User Registration and User Login. Existing user can sign in using their email and password. New user can register with firstname,lastname,email and new password.
 
-# Output
 After Successful login/registration, it displays a page with a welcome message with the name of the user that logged in/registered. The use can logout using a button provided
 
 # Usage
