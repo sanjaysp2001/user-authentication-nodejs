@@ -1,3 +1,6 @@
+//configuring environment variables
+require('dotenv').config()
+
 const express = require("express");
 const mongoose = require("mongoose");
 const passport = require("passport");
@@ -5,12 +8,14 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const User = require("./models/user");
 const userRouter = require("./routes/user.routes");
-const config = require("./config");
+//const config = require("./config");
 const authenticate = require("./authenticate");
 const app = express();
 
+
+
 /*-------------------------------------Database Configuration -Starts------------------------------------------------ */
-mongoose.connect(config.mongoUrl, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -33,7 +38,7 @@ app.get("/", async (req, res) => {
 
   //This function checks if the jwt cookie is valid
   if (req.cookies["jwt"]) {
-    jwt.verify(req.cookies["jwt"], config.secretKey, function (err, decoded) {
+    jwt.verify(req.cookies["jwt"], process.env.SECRET, function (err, decoded) {
       if (!err) 
         res.redirect("/all");
       else 
