@@ -6,6 +6,7 @@ const ExtractJWT = require("passport-jwt").ExtractJwt;
 const config = require("./config");
 const User = require("./models/user");
 
+/*------------------------------Defining Local Strategy for Passport - Starts---------------------------------------*/
 exports.local = passport.use(new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password'
@@ -14,6 +15,10 @@ exports.local = passport.use(new LocalStrategy({
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+/*-------------------------------Defining Local Strategy for Passport - Ends--------------------------------------------------------------------------- */
+
+
+//Function to Sign a JSON Web Token
 exports.getToken = (user) => {
   return jwt.sign(user, config.secretKey, { expiresIn: 3600 });
 };
@@ -26,10 +31,13 @@ var cookieExtractor = function (req) {
   }
   return token;
 };
+
+//Options to use with JWT Strategy
 var options = {};
 options.jwtFromRequest = cookieExtractor;
 options.secretOrKey = config.secretKey;
 
+//Authenticates user using JWT
 exports.jwtPassport = passport.use(
   new JwtStrategy(options, (jwt_payload, done) => {
     
