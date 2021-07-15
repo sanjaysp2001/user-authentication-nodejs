@@ -17,7 +17,17 @@ Then start the server using
 ```
 npm start
 ```
+# Endpoints
+The following endpoints are available
 
+Register/Signup(POST)
+```
+https://<domain-name>/users/signup
+```
+SignIn
+```
+https://<domain-name>/users/login
+```
 # Example Usernames
 Email: johndoe@gmail.com
 Password: john1234
